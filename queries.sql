@@ -158,6 +158,7 @@ ORDER BY
 
 -- 17.Obter a quantidade de produtos por categoria (observe que algumas categorias estão com a letra inicial minúscula e outras maiúscula, você deve agrupá-las mesmo com essa diferença);
 SELECT
+  LOWER(categoria),
   COUNT(*)
 FROM
   produtos
@@ -166,29 +167,33 @@ GROUP BY
 
 -- 18.Obter a média de preço por categoria;
 SELECT
+  LOWER(categoria),
   AVG(preco)
-FROM
-  produtos
-GROUP BY
-  LOWER(categoria)
-
-
--- 19.Obter o preço do produto mais barato por categoria;
-SELECT
-  MIN(preco)
 FROM
   produtos
 GROUP BY
   LOWER(categoria);
 
 
+-- 19.Obter o preço do produto mais barato por categoria;
+SELECT
+  LOWER(categoria),
+  MIN(preco)
+FROM
+  produtos
+GROUP BY
+  LOWER(categoria);
+
 -- 20.Obter a quantidade de produtos com valor abaixo de 1000.00, separadas por categoria;
 SELECT
+  LOWER(categoria),
   COUNT(*)
 FROM
   produtos
 GROUP BY
   LOWER(categoria)
 HAVING COUNT(preco) < 1000;
+
+
 
 
